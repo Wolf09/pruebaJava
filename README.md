@@ -27,3 +27,5 @@
 ### La respuesta en un codigo HTTP adecuado y mensaje de informacion en caso de error
 ### En caso de Exito se retorna el Usuario y otros datos solicitados
 ### Se hacen uso de las tecnologias solicitadas y Validaciones
+
+<img height="500" src="https://github.com/Wolf09/pruebaJava/blob/main/src/main/resources/static/images/apiJava.png" width="300"/>
