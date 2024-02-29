@@ -44,4 +44,4 @@
     y despues debe levantar el proyecto con Spring 3.2.3 o superior
 
 ## Diagrama de Funcionamiento del API RESTFULL
-<img height="900" src="https://github.com/Wolf09/pruebaJava/tree/main/src/main/resources/static/images/apiJava.png" width="800"/>
+<img height="900" src="https://github.com/Wolf09/pruebaJava/blob/main/src/main/resources/static/images/apiJava.png" width="800"/>
