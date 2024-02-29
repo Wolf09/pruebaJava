@@ -2,7 +2,8 @@ package com.example.apijava.controller;
 
 import com.example.apijava.model.dao.Usuario;
 import com.example.apijava.model.dto.Error;
-import com.example.apijava.model.services.UsuarioServiceImplement;
+import com.example.apijava.model.dto.UsuarioListar;
+import com.example.apijava.model.services.factory.FactoryUsuario;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,9 +17,7 @@ import java.util.List;
 @RestController
 public class UsuarioController {
     @Autowired
-    private UsuarioServiceImplement usuarioServiceImplement;
-
-
+    private FactoryUsuario factoryUsuario;
 
     @PostMapping("/crear")
     public ResponseEntity<?> crearUsuario(@Valid @RequestBody Usuario user, BindingResult result){
@@ -32,13 +31,14 @@ public class UsuarioController {
             errores=new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
             return errores;
         }
-        usuario=new ResponseEntity<>(usuarioServiceImplement.crearUsuario(user), HttpStatus.OK);
+        usuario=new ResponseEntity<>(factoryUsuario.crearObjeto(user), HttpStatus.OK);
         return usuario;
     }
+
     @GetMapping("/listar")
-    public ResponseEntity<List<Usuario>> listarUsuarios(){
-        ResponseEntity<List<Usuario>> miLista;
-        miLista= new ResponseEntity<>(usuarioServiceImplement.listarUsuarios(), HttpStatus.OK);
+    public ResponseEntity<List<UsuarioListar>> listarUsuarios(){
+        ResponseEntity<List<UsuarioListar>> miLista;
+        miLista= new ResponseEntity<>(factoryUsuario.listarObjetos(), HttpStatus.OK);
         return miLista;
     }
 

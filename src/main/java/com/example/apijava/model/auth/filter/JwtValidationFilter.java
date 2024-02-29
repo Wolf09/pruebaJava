@@ -13,7 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import java.io.IOException;
-import com.example.apijava.controller.exceptions.WTException;
+import com.example.apijava.controller.exceptions.JwttException;
 
 import static com.example.apijava.model.auth.TokenJwtConfig.*;
 public class JwtValidationFilter extends BasicAuthenticationFilter {
@@ -41,7 +41,7 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
             SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             chain.doFilter(request,response);
         } catch (JwtException e){
-            throw new WTException("Token Invalido Acceso No autorizado");
+            throw new JwttException("Token Invalido Acceso No autorizado");
         }
 
     }

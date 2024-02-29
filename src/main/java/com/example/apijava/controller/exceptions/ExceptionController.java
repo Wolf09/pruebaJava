@@ -47,7 +47,7 @@ public class ExceptionController {
     }
 
 
-    @ExceptionHandler({WTException.class,JwtException.class})
+    @ExceptionHandler({JwttException.class,JwtException.class})
     @ResponseStatus(HttpStatus.FORBIDDEN)
     public Map<String, String> jwtException(Exception ex){
 

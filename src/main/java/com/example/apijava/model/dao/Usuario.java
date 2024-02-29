@@ -25,19 +25,10 @@ public class Usuario implements Serializable {
 
     @Transient
     @Column(name = "password", insertable = false, updatable = false)
-    @Pattern(regexp = "^(?=.*\\d)(?=.*[\\u0021-\\u002b\\u003c-\\u0040])(?=.*[A-Z])(?=.*[a-z])\\S{8,16}$",message = "El password debe estar entre 8 y 12 caracteres, Al menos: 1 Mayuscula, 1 minuscula, 1 numero, nose permiten espacios en blanco, 1 caracter especial")
+    @Pattern(regexp = "^(?=.*\\d)(?=.*[\\u0021-\\u002b\\u003c-\\u0040])(?=.*[A-Z])(?=.*[a-z])\\S{8,16}$",message = "El password debe estar entre 8 y 16 caracteres, Al menos: 1 Mayuscula, 1 minuscula, 1 numero, nose permiten espacios en blanco, 1 caracter especial")
     private String password;
 
-
-    private String password2;
-
-    public String getPassword2() {
-        return password2;
-    }
-
-    public void setPassword2(String password2) {
-        this.password2 = password2;
-    }
+    private String passwordEncrypt;
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @CreationTimestamp()
@@ -49,7 +40,7 @@ public class Usuario implements Serializable {
     private LocalDateTime lastLogin;
 
 
-    @Column(name = "token", insertable = false, updatable = false)
+    @Column(name = "token")
     private String token;
 
     private Boolean isactive;
@@ -73,6 +64,27 @@ public class Usuario implements Serializable {
         this.lastLogin = lastLogin;
         this.token = token;
         this.isactive = isactive;
+    }
+    public Usuario(UUID uuid, String name, String email, String password, LocalDateTime created, LocalDateTime modified, LocalDateTime lastLogin, String token, Boolean isactive,List<Telefono> phones) {
+
+        this.uuid = uuid;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.created = created;
+        this.modified = modified;
+        this.lastLogin = lastLogin;
+        this.token = token;
+        this.isactive = isactive;
+        this.phones=phones;
+    }
+
+    public String getPasswordEncrypt() {
+        return passwordEncrypt;
+    }
+
+    public void setPasswordEncrypt(String passwordEncrypt) {
+        this.passwordEncrypt = passwordEncrypt;
     }
 
     public UUID getUuid() {
@@ -158,8 +170,7 @@ public class Usuario implements Serializable {
         this.phones.add(telf);
     }
 
-    @Serial
-    private static final long serialVersionUID=1L;
+
 
     @Override
     public String toString() {
@@ -170,10 +181,12 @@ public class Usuario implements Serializable {
                 ", password='" + password + '\'' +
                 ", created=" + created +
                 ", modified=" + modified +
-                ", lastLogin=" + lastLogin +
+                ", last_Login=" + lastLogin +
                 ", token='" + token + '\'' +
                 ", isactive=" + isactive +
                 ", phones=" + phones +
                 '}';
     }
+    @Serial
+    private static final long serialVersionUID=1L;
 }
