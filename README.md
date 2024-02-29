@@ -43,5 +43,5 @@
     mvn install          //LLeva el jar a nuestro repositorio local de jars
     y despues debe levantar el proyecto con Spring 3.2.3 o superior
 
-## Diagrama de Funcionamiento del API RESTFULL
+## Diagrama de Funcionamiento del API RESTFULLhh
 <img height="900" src="https://github.com/Wolf09/pruebaJava/blob/main/src/main/resources/static/images/apiJava.png" width="800"/>
