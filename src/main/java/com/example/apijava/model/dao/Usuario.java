@@ -45,7 +45,7 @@ public class Usuario implements Serializable {
 
     private Boolean isactive;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "user_uuid")
     private List<Telefono> phones;
 

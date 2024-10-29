@@ -14,6 +14,7 @@ public class Configuracion {
 
     @Bean
     PasswordEncoder passwordEncoder(){
+
         return new BCryptPasswordEncoder();
     }
 

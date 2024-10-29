@@ -1,5 +1,6 @@
 package com.example.apijava.model.auth.filter;
 
+import com.example.apijava.controller.exceptions.JwttException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -13,7 +14,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import java.io.IOException;
-import com.example.apijava.controller.exceptions.JwttException;
 
 import static com.example.apijava.model.auth.TokenJwtConfig.*;
 public class JwtValidationFilter extends BasicAuthenticationFilter {
